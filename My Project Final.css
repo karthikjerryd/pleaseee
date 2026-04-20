@@ -109,6 +109,7 @@ nav {
     width: fit-content;
     font-size: 25px;
     padding: 10px 35px;
+    cursor: pointer;
 }
 
 .scooter {
@@ -117,12 +118,14 @@ nav {
     width: fit-content;
     font-size: 25px;
     padding: 10px 35px;
+    cursor: pointer;
 }
 
 .mcands p {
     color: gray;
     display: inline;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 /* EVENT VIDEO  */
