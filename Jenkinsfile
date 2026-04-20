@@ -3,23 +3,24 @@ pipeline {
 
     stages {
 
-        stage('Clone Repository') {
+        stage('Clone Repo') {
             steps {
-                git 'https://github.com/karthikjerryd/pleaseee.git'
+                git branch: 'main', url: 'https://github.com/karthikjerryd/pleaseee.git'
             }
         }
 
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo 'No build needed for static HTML project'
+                sh 'docker build -t my-website .'
             }
         }
 
-        stage('Deploy') {
+        stage('Run Container') {
             steps {
                 sh '''
-                sudo rm -rf /var/www/html/*
-                sudo cp -r * /var/www/html/
+                docker stop my-container || true
+                docker rm my-container || true
+                docker run -d -p 80:80 --name my-container my-website
                 '''
             }
         }
